@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>加入交流群 - 合月亭</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --accent-gold: #fbbf24;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(251,191,36,0.1) 0%, rgba(15,23,42,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        /* 顶栏样式优化 */
+        .top-bar {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(15, 23, 42, 0.6); /* 增加微弱背景色提升层次 */
+            backdrop-filter: blur(5px); /* 毛玻璃效果 */
+        }
+        .top-bar-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+        .top-bar-inner .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+        .top-bar-inner .logo img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--accent-gold);
+        }
+        /* 竖线样式：加粗、变白、增高 */
+        .top-bar-inner .v-line {
+            width: 3px;
+            height: 36px;
+            background: #ffffff; /* 纯白色 */
+            margin: 0 1.5rem;
+            opacity: 0.9; /* 提高不透明度，确保白色清晰可见 */
+            flex-shrink: 0;
+            border-radius: 2px; /* 稍微加一点圆角，显得不那么生硬 */
+        }
+        /* 标题样式优化 */
+        .top-bar-inner .page-title {
+            font-size: 2.6rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+            white-space: nowrap;
+            text-shadow: 0 0 10px rgba(251,191,36,0.3); /* 增加淡淡的金色发光 */
+        }
+        .divider {
+            max-width: 800px;
+            margin: 0 auto;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--accent-gold), transparent);
+            opacity: 0.4;
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2.5rem 2rem 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .group-card {
+            display: block;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 2rem 2.5rem;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            position: relative;
+        }
+        .group-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            border-color: rgba(251,191,36,0.4);
+        }
+        .group-card .group-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .group-card .group-name::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            box-shadow: 0 0 8px var(--accent-gold);
+        }
+        .group-card .group-qq {
+            font-size: 1rem;
+            color: var(--text-sub);
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+        }
+        .group-card .arrow {
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.4rem;
+            color: var(--accent-gold);
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .group-card:hover .arrow {
+            opacity: 1;
+            transform: translateY(-50%) translateX(4px);
+        }
+        @media (max-width: 600px) {
+            .top-bar { padding: 1rem 1.2rem; }
+            .top-bar-inner .logo { font-size: 2rem; }
+            .top-bar-inner .logo img { width: 30px; height: 30px; }
+            .top-bar-inner .v-line { height: 28px; margin: 0 1rem; width: 2px; }
+            .top-bar-inner .page-title { font-size: 2.2rem; }
+            .content { padding: 2rem 1.2rem 3rem; }
+            .group-card { padding: 1.5rem 1.8rem; }
+            .group-card .group-name { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <a href="index.html" class="logo">
+                <img src="assets/css/images/biglogo.png" alt="合月亭">
+                合月亭
+            </a>
+            <div class="v-line"></div>
+            <div class="page-title">加入交流群</div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="content">
+        <a class="group-card" href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=wWZqzX8EPYK_BG1KVvuLzzrG9SvFhwz5&authKey=JroR1GKyTQL79NyndpCaO3Hb%2BUxRf9Q6ZSK9vM6vgRcH%2FiVGG0%2FudkPwx8MU1we0&noverify=0&group_code=853996356" target="_blank" rel="noopener">
+            <span class="arrow">→</span>
+            <div class="group-name">合月亭｜游戏讨论区</div>
+            <div class="group-qq">QQ群：853996356</div>
+        </a>
+        <a class="group-card" href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=FhKx6aZsyjHbedxnhk47P0Y-S3OWlJn9&authKey=UO4VlUfFXM5GqcNfUAxFR9EWH5XyyLiXN5o035VOuR1fVBzJsqEFmmQotIRCHSti&noverify=0&group_code=755481594" target="_blank" rel="noopener">
+            <span class="arrow">→</span>
+            <div class="group-name">合月亭｜下载解压技术问题讨论区</div>
+            <div class="group-qq">QQ群：755481594</div>
+        </a>
+    </div>
+
+</body>
+</html>
