@@ -20,21 +20,37 @@
     }
     .header {
       display: flex;
-      justify-content: space-between;
       align-items: center;
       padding-bottom: 1.5rem;
       border-bottom: 1px solid #e2e8f0;
       margin-bottom: 2rem;
     }
+    /* 统一 logo 样式：圆形图片 + 文字 */
     .logo {
-      display: block;
-      max-height: 2.8rem;
-      width: auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      letter-spacing: 2px;
     }
     .logo img {
-      height: 100%;
-      width: auto;
-      max-width: 100%;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid #fbbf24;
+    }
+    /* 新增：白色竖线 */
+    .v-line {
+      width: 3px;
+      height: 24px;
+      background: #94a3b8;
+      margin: 0 1.2rem;
+      border-radius: 2px;
+      flex-shrink: 0;
     }
     .page-title {
       font-size: 1.5rem;
@@ -64,15 +80,16 @@
   <div class="header">
     <a href="index.html" class="logo">
       <img src="assets/css/images/biglogo.png" alt="合月亭">
+      合月亭
     </a>
+    <div class="v-line"></div>
     <div class="page-title">Contact/DMCA</div>
   </div>
 
   <div class="contact-card">
     <p>优先推荐通过加群联系</p>
     <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=wWZqzX8EPYK_BG1KVvuLzzrG9SvFhwz5&authKey=JroR1GKyTQL79NyndpCaO3Hb%2BUxRf9Q6ZSK9vM6vgRcH%2FiVGG0%2FudkPwx8MU1we0&noverify=0&group_code=853996356" class="btn">
-       QQ群：853996356
-
+      QQ群：853996356
     </a>
   </div>
 
