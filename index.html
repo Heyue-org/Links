@@ -22,35 +22,47 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
-            /* 保持原有的背景透明度不变 */
-            background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('assets/css/images/beijing.jpg');
+            background-image: url('assets/css/images/beijing.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             transition: background 0.4s ease, color 0.4s ease;
         }
 
-        /* 白天模式：暗黑模式参数黑变白，背景图不变 */
+        body.dark-mode {
+            background-image: none;
+            background-color: var(--bg-dark);
+        }
+
         body.light-mode {
-            background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('assets/css/images/beijing.jpg');
+            background-image: none;
+            background-color: #f8fafc;
             color: #1e293b;
         }
+        body.light-mode nav { background: rgba(248,250,252,0.85); border-color: rgba(0,0,0,0.08); }
+        body.light-mode .logo { color: #1e293b; }
+        body.light-mode .nav-link { color: #64748b; }
+        body.light-mode .nav-link:hover { color: #d97706; }
+        body.light-mode .nav-v-line { background: #1e293b; opacity: 0.2; }
+        body.light-mode .icon-btn { color: #1e293b; }
+        body.light-mode .icon-btn:hover { color: #d97706; }
         body.light-mode .hero h1 {
             background: linear-gradient(to right, #1e293b, #475569);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        body.light-mode nav { background: rgba(255,255,255,0.7); }
-        body.light-mode .logo { color: #1e293b; }
+        body.light-mode .hero-slogan { color: #d97706; }
+        body.light-mode .btn { border-color: #d97706; color: #d97706; background: rgba(217,119,6,0.08); }
+        body.light-mode .btn:hover { background: rgba(217,119,6,0.15); box-shadow: 0 0 15px rgba(217,119,6,0.3); }
         body.light-mode .section-title { color: #1e293b; }
-        /* 白天模式下大框和卡片的适配 */
-        body.light-mode .project-wrapper { background: rgba(255, 255, 255, 0.4); border-color: rgba(0,0,0,0.1); }
-        body.light-mode .project-card { background: rgba(255,255,255,0.75); border-color: rgba(0,0,0,0.08); }
-
-        body.dark-mode {
-            background-image: none;
-            background-color: var(--bg-dark);
-        }
+        body.light-mode .projects-wrapper { background: rgba(255,255,255,0.55); border-color: rgba(0,0,0,0.06); }
+        body.light-mode .project-card { background: rgba(255,255,255,0.8); border-color: rgba(0,0,0,0.08); }
+        body.light-mode .future-annotations { color: #64748b; }
+        body.light-mode .text-links { color: #64748b; }
+        body.light-mode .text-links a { color: #64748b; }
+        body.light-mode .text-links a:hover { color: #d97706; }
+        body.light-mode .text-links span { color: rgba(0,0,0,0.15); }
+        body.light-mode footer { border-color: rgba(0,0,0,0.08); color: #64748b; }
 
         body::before {
             content: '';
@@ -60,7 +72,7 @@
             transform: translateX(-50%);
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(251, 191, 36, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(251,191,36,0.1) 0%, transparent 70%);
             z-index: -1;
             pointer-events: none;
         }
@@ -72,7 +84,7 @@
             padding: 1.5rem 2rem;
             z-index: 100;
             border-bottom: 1px solid var(--border-color);
-            background: rgba(15, 23, 42, 0.6);
+            background: rgba(15,23,42,0.6);
             backdrop-filter: blur(8px);
         }
         .nav-container {
@@ -99,7 +111,6 @@
             object-fit: cover;
             border: 1px solid var(--accent-gold);
         }
-
         .nav-right { display: flex; align-items: center; gap: 1.2rem; }
         .nav-link {
             color: var(--text-sub);
@@ -110,7 +121,6 @@
             white-space: nowrap;
         }
         .nav-link:hover { color: var(--accent-gold); }
-
         .nav-v-line {
             width: 1px;
             height: 18px;
@@ -118,7 +128,6 @@
             opacity: 0.3;
             flex-shrink: 0;
         }
-
         .icon-btn {
             display: flex;
             align-items: center;
@@ -188,27 +197,27 @@
             display: inline-block;
             border: 1px solid var(--accent-gold);
             color: var(--accent-gold);
-            background: rgba(251, 191, 36, 0.1);
+            background: rgba(251,191,36,0.1);
         }
         .btn:hover {
-            background: rgba(251, 191, 36, 0.2);
-            box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+            background: rgba(251,191,36,0.2);
+            box-shadow: 0 0 15px rgba(251,191,36,0.4);
         }
 
         .projects-section { padding: 4rem 0 6rem; }
-        .section-title { text-align: center; font-size: 2rem; margin-bottom: 3rem; }
-        
-        /* 新增：项目区大框样式，降低透明度 */
-        .project-wrapper {
-            background: rgba(15, 23, 42, 0.4);
+        .projects-wrapper {
+            background: rgba(15,23,42,0.55);
             border: 1px solid var(--border-color);
             border-radius: 20px;
             padding: 3rem 2rem;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(6px);
         }
-
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
-
+        .section-title { text-align: center; font-size: 2rem; margin-bottom: 3rem; }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
         .project-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -224,18 +233,36 @@
         .project-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            border-color: rgba(251, 191, 36, 0.3);
+            border-color: rgba(251,191,36,0.3);
         }
-
-        .future-image { max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        .future-annotations { color: var(--text-sub); font-size: 1.1rem; line-height: 1.8; text-align: left; max-width: 700px; margin: 0 auto; }
+        .future-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .future-annotations {
+            color: var(--text-sub);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: left;
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
         .text-links { margin-top: 3rem; text-align: center; font-size: 0.95rem; color: var(--text-sub); }
         .text-links a { color: var(--text-sub); text-decoration: none; transition: color 0.3s; margin: 0 0.5rem; }
         .text-links a:hover { color: var(--accent-gold); }
         .text-links span { color: var(--border-color); margin: 0 0.5rem; }
 
-        footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border-color); color: var(--text-sub); font-size: 0.85rem; }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-sub);
+            font-size: 0.85rem;
+        }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
@@ -245,7 +272,7 @@
             .logo { font-size: 1.3rem; }
             .logo img { width: 32px; height: 32px; }
             .project-card { padding: 3rem; }
-            .project-wrapper { padding: 2rem 1rem; }
+            .projects-wrapper { padding: 2rem 1rem; }
             .icon-btn { width: 32px; height: 32px; }
             .icon-btn svg { width: 22px; height: 22px; }
             .nav-link, .nav-v-line { display: none; }
@@ -298,8 +325,7 @@
 
     <section class="projects-section">
         <div class="container">
-            <!-- 新增：项目区大框 -->
-            <div class="project-wrapper">
+            <div class="projects-wrapper">
                 <h2 class="section-title">我们的项目</h2>
                 <div class="projects-grid">
                     <div class="project-card">
@@ -310,7 +336,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="text-links">
                 <a href="Friend_Links.html">友情链接</a>
                 <span>|</span>
