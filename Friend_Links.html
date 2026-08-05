@@ -3,20 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Links</title>
+<title>友情链接 - 合月亭</title>
 <style>
-body{margin:0;padding:60px 20px;font-family:sans-serif;background:#f5f6f8}
-h1{text-align:center;font-size:26px;margin-bottom:36px;color:#333}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:sans-serif;background:#f5f6f8;min-height:100vh}
+.top-bar{background:#fff;border-bottom:1px solid #e8e8e8;padding:1rem 2rem;position:sticky;top:0;z-index:100}
+.top-bar-inner{max-width:900px;margin:0 auto;display:flex;align-items:center}
+.top-bar-inner .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#333;font-size:1.3rem;font-weight:700;letter-spacing:1px}
+.top-bar-inner .logo img{width:32px;height:32px;border-radius:50%;object-fit:cover}
+.top-bar-inner .v-line{width:2px;height:24px;background:#ddd;margin:0 1.2rem;flex-shrink:0}
+.top-bar-inner .page-title{font-size:1.3rem;font-weight:600;color:#333;letter-spacing:1px}
+.content{padding:40px 20px 60px}
 .grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-.card{display:flex;align-items:center;gap:12px;background:#fff;border-radius:10px;padding:16px;text-decoration:none;color:#333;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.card{display:flex;align-items:center;gap:12px;background:#fff;border-radius:10px;padding:16px;text-decoration:none;color:#333;box-shadow:0 1px 3px rgba(0,0,0,.08);transition:transform .3s,box-shadow .3s}
 .card:hover{transform:translateY(-3px);box-shadow:0 5px 14px rgba(0,0,0,.12)}
 .card img{width:42px;height:42px;border-radius:8px}
 .card .name{font-weight:600;font-size:15px}
 .card .desc{font-size:12px;color:#999;margin-top:3px}
+.divider{max-width:900px;margin:40px auto 24px;height:1px;background:linear-gradient(to right,transparent,#d0d0d0,transparent)}
+.apply-box{max-width:900px;margin:0 auto;text-align:center;color:#888;font-size:14px;line-height:1.9}
+.apply-box .apply-title{font-size:15px;color:#666;margin-bottom:10px}
+.apply-box pre{display:inline-block;text-align:left;background:#fff;border:1px solid #e8e8e8;border-radius:8px;padding:14px 24px;font-family:'Courier New',monospace;font-size:13px;color:#555;margin-top:6px}
+@media(max-width:600px){.top-bar{padding:.8rem 1rem}.top-bar-inner .logo{font-size:1.1rem}.top-bar-inner .logo img{width:26px;height:26px}.top-bar-inner .page-title{font-size:1.1rem}.content{padding:28px 14px 40px}.apply-box pre{padding:12px 16px;font-size:12px}}
 </style>
 </head>
 <body>
-<h1>友情链接</h1>
+
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <a href="index.html" class="logo">
+      <img src="https://avatars.githubusercontent.com/u/312074133?s=200&v=4" alt="合月亭">
+      合月亭
+    </a>
+    <div class="v-line"></div>
+    <div class="page-title">友情链接</div>
+  </div>
+</div>
+
+<div class="content">
 <div class="grid">
 <a class="card" href="https://g.xn--8qvt52h.top/" target="_blank">
 <img src="https://g.xn--8qvt52h.top/assets/favicon-lsdnlph6.png" alt="">
@@ -26,6 +50,22 @@ h1{text-align:center;font-size:26px;margin-bottom:36px;color:#333}
 <img src="assets/css/images/200x200bb-75.webp" alt="ArkRPG">
 <div><div class="name">ArkRPG</div><div class="desc">在 iPhone / iPad 上体验 RPG Maker 游戏</div></div>
 </a>
+</div>
+
+<div class="divider"></div>
+
+<div class="apply-box">
+  <div class="apply-title">如申请加入友链请按如下格式提供</div>
+  <pre>site: "名字",
+desc: "简介",
+url: "站址",
+logo: "logo图片链接"</pre>
+  <div class="apply-title">通过后您需要在自己的网站中添加我们的网站信息</div>
+  <pre>site: "合月亭",
+desc: "二次元萌新资源导航站",
+url: "https://heyue-org.github.io/web/",
+logo: "https://raw.githubusercontent.com/Heyue-org/web/main/assets/css/images/biglogo.png"</pre>
+</div>
 </div>
 
 <!-- Cloudflare Web Analytics -->
