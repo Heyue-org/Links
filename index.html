@@ -22,6 +22,7 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
+            /* 保持原有的背景透明度不变 */
             background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('assets/css/images/beijing.jpg');
             background-size: cover;
             background-position: center;
@@ -29,8 +30,9 @@
             transition: background 0.4s ease, color 0.4s ease;
         }
 
+        /* 白天模式：暗黑模式参数黑变白，背景图不变 */
         body.light-mode {
-            background-image: linear-gradient(rgba(255,255,255,0.82), rgba(255,255,255,0.82)), url('assets/css/images/beijing.jpg');
+            background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('assets/css/images/beijing.jpg');
             color: #1e293b;
         }
         body.light-mode .hero h1 {
@@ -40,8 +42,10 @@
         }
         body.light-mode nav { background: rgba(255,255,255,0.7); }
         body.light-mode .logo { color: #1e293b; }
-        body.light-mode .project-card { background: rgba(255,255,255,0.75); border-color: rgba(0,0,0,0.08); }
         body.light-mode .section-title { color: #1e293b; }
+        /* 白天模式下大框和卡片的适配 */
+        body.light-mode .project-wrapper { background: rgba(255, 255, 255, 0.4); border-color: rgba(0,0,0,0.1); }
+        body.light-mode .project-card { background: rgba(255,255,255,0.75); border-color: rgba(0,0,0,0.08); }
 
         body.dark-mode {
             background-image: none;
@@ -193,6 +197,16 @@
 
         .projects-section { padding: 4rem 0 6rem; }
         .section-title { text-align: center; font-size: 2rem; margin-bottom: 3rem; }
+        
+        /* 新增：项目区大框样式，降低透明度 */
+        .project-wrapper {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            backdrop-filter: blur(5px);
+        }
+
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
 
         .project-card {
@@ -231,6 +245,7 @@
             .logo { font-size: 1.3rem; }
             .logo img { width: 32px; height: 32px; }
             .project-card { padding: 3rem; }
+            .project-wrapper { padding: 2rem 1rem; }
             .icon-btn { width: 32px; height: 32px; }
             .icon-btn svg { width: 22px; height: 22px; }
             .nav-link, .nav-v-line { display: none; }
@@ -283,15 +298,19 @@
 
     <section class="projects-section">
         <div class="container">
-            <h2 class="section-title">我们的项目</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="https://via.placeholder.com/800x400/1e293b/fbbf24?text=Future+Image" alt="未来会有一张图" class="future-image">
-                    <div class="future-annotations">
-                        <p>没想好喵</p>
+            <!-- 新增：项目区大框 -->
+            <div class="project-wrapper">
+                <h2 class="section-title">我们的项目</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="https://via.placeholder.com/800x400/1e293b/fbbf24?text=Future+Image" alt="未来会有一张图" class="future-image">
+                        <div class="future-annotations">
+                            <p>没想好喵</p>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div class="text-links">
                 <a href="Friend_Links.html">友情链接</a>
                 <span>|</span>
