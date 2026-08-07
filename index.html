@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>合月亭 - 有一份光，便发一份热</title>
+    <title>合月亭-打造最好的ACG地图与指南</title>
     <style>
         :root {
             --bg-dark: #0f172a;
@@ -29,11 +29,13 @@
             transition: background 0.4s ease, color 0.4s ease;
         }
 
+        /* 深色模式：去除背景图，使用纯色 */
         body.dark-mode {
             background-image: none;
             background-color: var(--bg-dark);
         }
 
+        /* 浅色模式：浅色背景与文字适配 */
         body.light-mode {
             background-image: none;
             background-color: #f8fafc;
@@ -64,6 +66,7 @@
         body.light-mode .text-links span { color: #94a3b8; }
         body.light-mode footer { border-color: rgba(0,0,0,0.08); color: #334155; }
 
+        /* 背景光晕装饰 */
         body::before {
             content: '';
             position: fixed;
@@ -77,6 +80,7 @@
             pointer-events: none;
         }
 
+        /* 导航栏样式 */
         nav {
             position: fixed;
             top: 0;
@@ -111,7 +115,13 @@
             object-fit: cover;
             border: 1px solid var(--accent-gold);
         }
-        .nav-right { display: flex; align-items: center; gap: 1.2rem; }
+        
+        /* 导航右侧区域 */
+        .nav-right { 
+            display: flex; 
+            align-items: center; 
+            gap: 1.2rem; 
+        }
         .nav-link {
             color: var(--text-sub);
             text-decoration: none;
@@ -128,6 +138,8 @@
             opacity: 0.3;
             flex-shrink: 0;
         }
+        
+        /* 图标按钮 */
         .icon-btn {
             display: flex;
             align-items: center;
@@ -145,6 +157,7 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 
+        /* Hero 区域 */
         .hero {
             height: 60vh;
             display: flex;
@@ -204,6 +217,7 @@
             box-shadow: 0 0 15px rgba(251,191,36,0.4);
         }
 
+        /* 项目展示区 */
         .projects-section { padding: 4rem 0 6rem; }
         .projects-wrapper {
             background: rgba(15,23,42,0.55);
@@ -213,42 +227,70 @@
             backdrop-filter: blur(6px);
         }
         .section-title { text-align: center; font-size: 2rem; margin-bottom: 3rem; }
+        
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: 1fr;
             gap: 2rem;
         }
+
         .project-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 16px;
-            padding: 6rem;
+            padding: 2rem;
             transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
             overflow: hidden;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
         }
         .project-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             border-color: rgba(251,191,36,0.3);
         }
-        .future-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+
+        .project-header {
+            margin-bottom: 1.5rem;
+            text-align: center;
         }
+        .project-main-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .images-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .image-container {
+            position: relative;
+            cursor: pointer;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .image-container:hover {
+            transform: scale(1.02);
+        }
+
+        .future-image {
+            width: 100%;
+            height: 312px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
         .future-annotations {
             color: var(--text-sub);
             font-size: 1.1rem;
             line-height: 1.8;
             text-align: left;
-            max-width: 700px;
-            margin: 0 auto;
         }
 
         .text-links { margin-top: 3rem; text-align: center; font-size: 0.95rem; color: #e2e8f0; }
@@ -264,6 +306,79 @@
             font-size: 0.85rem;
         }
 
+        /* 图片放大模态框 */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+            backdrop-filter: blur(2px);
+        }
+        .image-modal.active {
+            display: flex;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 70vw;
+            max-height: 70vh;
+            animation: zoomIn 0.4s ease;
+        }
+        @keyframes zoomIn {
+            from { 
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to { 
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -50px;
+            right: -10px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1) rotate(90deg);
+        }
+
+        /* 移动端适配 */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .hero-slogan { font-size: 1.2rem; }
@@ -271,11 +386,28 @@
             .btn { width: 100%; text-align: center; }
             .logo { font-size: 1.3rem; }
             .logo img { width: 32px; height: 32px; }
-            .project-card { padding: 3rem; }
+            
+            .images-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .future-image {
+                height: 240px;
+            }
+            
             .projects-wrapper { padding: 2rem 1rem; }
             .icon-btn { width: 32px; height: 32px; }
             .icon-btn svg { width: 22px; height: 22px; }
-            .nav-link, .nav-v-line { display: none; }
+            
+            /* 修复手机端导航显示问题：保留链接，隐藏分隔线，调整间距 */
+            .nav-v-line { display: none; }
+            .nav-right { gap: 0.8rem; }
+            .nav-link { font-size: 0.9rem; }
+            
+            .modal-content {
+                max-width: 90vw;
+                max-height: 60vh;
+            }
         }
     </style>
 </head>
@@ -288,9 +420,7 @@
             </a>
             <div class="nav-right">
                 <a href="#" class="nav-link">公告</a>
-                <div class="nav-v-line"></div>
                 <a href="qq.html" class="nav-link">交流群</a>
-                <div class="nav-v-line"></div>
                 <button class="icon-btn" id="theme-toggle" title="切换背景模式" aria-label="切换背景模式">
                     <svg id="icon-img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -329,9 +459,22 @@
                 <h2 class="section-title">我们的项目</h2>
                 <div class="projects-grid">
                     <div class="project-card">
-                        <img src="https://via.placeholder.com/800x400/1e293b/fbbf24?text=Future+Image" alt="未来会有一张图" class="future-image">
+                        <div class="project-header">
+                            <h3 class="project-main-title">项目展示标题</h3>
+                        </div>
+
+                        <div class="images-grid">
+                            <div class="image-container" data-image="assets/css/images/wd1.webp">
+                                <img src="assets/css/images/wd1.webp" alt="项目展示一" class="future-image">
+                            </div>
+                            
+                            <div class="image-container" data-image="assets/css/images/wd2.webp">
+                                <img src="assets/css/images/wd2.webp" alt="项目展示二" class="future-image">
+                            </div>
+                        </div>
+                        
                         <div class="future-annotations">
-                            <p>没想好喵</p>
+                            <p>这是我们的项目介绍。两张图片展示了项目的不同方面，点击图片可以放大查看详情。</p>
                         </div>
                     </div>
                 </div>
@@ -343,6 +486,13 @@
             </div>
         </div>
     </section>
+
+    <div class="image-modal" id="imageModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">×</button>
+            <img src="" alt="放大图片" class="modal-image" id="modalImage">
+        </div>
+    </div>
 
     <footer>
         <div class="container">
@@ -378,10 +528,44 @@
         });
 
         applyMode();
+
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalClose = document.getElementById('modalClose');
+        const imageContainers = document.querySelectorAll('.image-container');
+
+        imageContainers.forEach(container => {
+            container.addEventListener('click', function() {
+                const imageUrl = this.getAttribute('data-image');
+                modalImg.src = imageUrl;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        modalClose.addEventListener('click', function() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
     </script>
 
-    <!-- Cloudflare Web Analytics -->
     <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5824bbe371ce4eefbe8027cb86c0d0a6"}'></script>
-    <!-- End Cloudflare Web Analytics -->
 </body>
 </html>
+
+
+
