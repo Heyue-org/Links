@@ -29,13 +29,11 @@
             transition: background 0.4s ease, color 0.4s ease;
         }
 
-        /* 深色模式：去除背景图，使用纯色 */
         body.dark-mode {
             background-image: none;
             background-color: var(--bg-dark);
         }
 
-        /* 浅色模式：浅色背景与文字适配 */
         body.light-mode {
             background-image: none;
             background-color: #f8fafc;
@@ -66,7 +64,9 @@
         body.light-mode .text-links span { color: #94a3b8; }
         body.light-mode footer { border-color: rgba(0,0,0,0.08); color: #334155; }
 
-        /* 背景光晕装饰 */
+        /* 项目标题跟随背景变色 */
+        body.light-mode .project-main-title { color: #1e293b; }
+
         body::before {
             content: '';
             position: fixed;
@@ -80,7 +80,6 @@
             pointer-events: none;
         }
 
-        /* 导航栏样式 */
         nav {
             position: fixed;
             top: 0;
@@ -116,7 +115,6 @@
             border: 1px solid var(--accent-gold);
         }
         
-        /* 导航右侧区域 */
         .nav-right { 
             display: flex; 
             align-items: center; 
@@ -139,7 +137,6 @@
             flex-shrink: 0;
         }
         
-        /* 图标按钮 */
         .icon-btn {
             display: flex;
             align-items: center;
@@ -157,7 +154,6 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 
-        /* Hero 区域 */
         .hero {
             height: 60vh;
             display: flex;
@@ -217,7 +213,6 @@
             box-shadow: 0 0 15px rgba(251,191,36,0.4);
         }
 
-        /* 项目展示区 */
         .projects-section { padding: 4rem 0 6rem; }
         .projects-wrapper {
             background: rgba(15,23,42,0.55);
@@ -306,7 +301,6 @@
             font-size: 0.85rem;
         }
 
-        /* 图片放大模态框 */
         .image-modal {
             display: none;
             position: fixed;
@@ -378,7 +372,6 @@
             transform: scale(1.1) rotate(90deg);
         }
 
-        /* 移动端适配 */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .hero-slogan { font-size: 1.2rem; }
@@ -387,19 +380,20 @@
             .logo { font-size: 1.3rem; }
             .logo img { width: 32px; height: 32px; }
             
+            /* 手机端图片保持横排两张 */
             .images-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
             }
             
             .future-image {
-                height: 240px;
+                height: 160px;
             }
             
             .projects-wrapper { padding: 2rem 1rem; }
             .icon-btn { width: 32px; height: 32px; }
             .icon-btn svg { width: 22px; height: 22px; }
             
-            /* 修复手机端导航显示问题：保留链接，隐藏分隔线，调整间距 */
             .nav-v-line { display: none; }
             .nav-right { gap: 0.8rem; }
             .nav-link { font-size: 0.9rem; }
